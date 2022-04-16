@@ -1,1 +1,1 @@
-![SPA Shell Architecture Diagram](image.png)
+![SPA Shell Architecture Diagram](imgs/spa_arch.png)
