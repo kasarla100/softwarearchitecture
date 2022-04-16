@@ -1,1 +1,1 @@
-spa_arch.png
+![SPA Shell Architecture Diagram](image.png)
