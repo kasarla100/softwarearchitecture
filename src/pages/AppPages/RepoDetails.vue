@@ -1,12 +1,23 @@
+import data from "./assets/repos.yaml"
 <template>
   <h4>repo details will go here</h4>
+
+  <div class="collapse" id="collapseInnerResponseConfig">
+    <div class="card card-body">Repos: {{ callRepoApi() }}</div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import api from '../../api/backend-api';
 
 export default defineComponent({
   name: 'HomePage',
+  methods: {
+    callRepoApi(): any {
+      api.getRepos;
+    },
+  },
 });
 </script>
 
