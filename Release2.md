@@ -42,3 +42,8 @@ See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quas
 
 ### Service Architecture
 ![](imgs/service_arch.png?raw=true)
+<img src=“imgs/service_arch.png”
+raw=true
+alt=“Service Architecture Diagram”
+style=“margin-right: 10px;”
+/>
