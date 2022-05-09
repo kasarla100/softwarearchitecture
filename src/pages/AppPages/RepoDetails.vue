@@ -11,11 +11,16 @@ import data from "./assets/repos.yaml"
 import { defineComponent } from 'vue';
 import api from '../../api/backend-api';
 
+interface Repo {
+  branchName: string;
+  url: string;
+}
+
 export default defineComponent({
   name: 'HomePage',
   methods: {
-    callRepoApi(): any {
-      api.getRepos;
+    callRepoApi(): Repo {
+      return api.getRepos();
     },
   },
 });
