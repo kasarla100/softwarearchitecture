@@ -7,4 +7,4 @@ docker build . -t [tag] -f .
 docker run -d tag
 
 ### Service Architecture
-![Alt diagram](https://github.com/kasarla100/softwarearchitecture/blob/proj-release-3/src/imgs/service_arch.png)
+![Alt diagram](https://github.com/kasarla100/softwarearchitecture/blob/proj-release-3/src/imgs/docker_arch.png)
