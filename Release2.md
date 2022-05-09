@@ -39,3 +39,7 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
+
+### Service Architecture
+![Alt diagram](https://github.com/kasarla100/softwarearchitecture/blob/proj-release-2/src/imgs/service_arch.png)
+
