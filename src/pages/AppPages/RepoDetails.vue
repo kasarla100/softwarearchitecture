@@ -1,45 +1,18 @@
-import data from "./assets/repos.yaml"
 <template>
-  <h4>repo details will go here</h4>
-
-  <div class="collapse" id="collapseInnerResponseConfig">
-    <div class="card card-body">Repos: {{ callRepoApi() }}</div>
-  </div>
+  <q-page class="flex flex-center">
+    <div class="text-h6">
+      <GithubProjectsContainer />
+    </div>
+  </q-page>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import api from '../../api/backend-api';
-
-interface Repo {
-  branchName: string;
-  url: string;
-}
-
+<script>
+import { defineComponent } from 'vue'
+import GithubProjectsContainer from '../../components/GithubProjectsContainer.vue'
 export default defineComponent({
-  name: 'HomePage',
-  methods: {
-    callRepoApi(): Repo {
-      return api.getRepos();
-    },
-  },
-});
+  name: 'RepoDetails',
+  components: {
+    GithubProjectsContainer,
+  }
+})
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h4 {
-  margin: 48px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

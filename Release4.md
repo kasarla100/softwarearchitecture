@@ -9,7 +9,7 @@ yarn
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Start the app in development mode (make sure the backend service is running using its instructions from another cmd prompt)
 ```bash
 quasar dev
 ```
@@ -32,9 +32,14 @@ npm run format
 
 
 
-### Build the app for production
+### Build the app
 ```bash
 quasar build
+```
+
+### launch the app (make sure the backend service is started using its instructions from another cmd prompt)
+```bash
+quasar dev
 ```
 
 ### Customize the configuration

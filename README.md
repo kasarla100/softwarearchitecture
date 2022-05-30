@@ -1,41 +1,8 @@
 # Quasar App (softwarearchitecture)
 
-A Quasar Project
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+### To run the UI(quasar app) and gitHubBackend Service in local, pls follow below guidelines:
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
-
-
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
+1. Start the Github backend Service - [instructions](githubBackendService/README.md)
+2. Start the UI Web Application - [instructions](Release4.md)
+3. After both apps are in running mode, open a browser and navigate to [http://localhost:8080](http://localhost:8080)
