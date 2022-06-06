@@ -27,7 +27,7 @@ public class GitHubService {
 	private RepositoryInterface service = null;
 
 	public GitHubService() {
-		Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.API_BASE_URL)
+		Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL)
 				.addConverterFactory(GsonConverterFactory.create()).build();
 
 		service = retrofit.create(RepositoryInterface.class);
@@ -38,7 +38,7 @@ public class GitHubService {
 	 * @throws IOException
 	 */
 	public List<GithubRepository> getRepos() throws IOException {
-		Call<List<GithubRepository>> reposCall = service.listRepos("token " + accessToken, Constants.API_VERSION_SPEC);
+		Call<List<GithubRepository>> reposCall = service.listRepos("token " + accessToken, Constants.API_VERSION);
 
 		Response<List<GithubRepository>> reposResponse = null;
 		List<GithubRepository> repos = null;
@@ -65,7 +65,7 @@ public class GitHubService {
 	 * @throws IOException
 	 */
 	public List<GithubRepository> getBranches() throws IOException {
-		Call<List<GithubRepository>> reposCall = service.branches("token " + accessToken, Constants.API_VERSION_SPEC);
+		Call<List<GithubRepository>> reposCall = service.branches("token " + accessToken, Constants.API_VERSION);
 
 		Response<List<GithubRepository>> reposResponse = null;
 		List<GithubRepository> repos = null;
