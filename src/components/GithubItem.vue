@@ -1,11 +1,11 @@
 <template>
   <div>
-    <a :href="urlLink"></a>
     <div>
-      <p><a :href="urlLink">{{ title }}</a></p>
+      <p><b>Git URL:</b><a :href="urlLink">{{ urlLink }}</a></p>
       <div>
-        <p>Description: {{ desc }}</p>
-        <p>Language: {{ language }}</p>
+        <p><b>Description:</b> {{ desc }}</p>
+        <p><b>Language:</b> {{ language }}</p>
+        <p><b>Repo URL:</b> {{ htmlUrl }}</p>
       </div>
       <div>
         <span v-for="tag in tags" v-bind:key="tag">{{ tag }} </span>
@@ -19,11 +19,12 @@
 export default {
   name: 'GithubItem',
   props: {
-    title: String,
+    name: String,
     urlLink: String,
     desc: String,
     language: String,
-    tags: Array
+    tags:String
+
   }
 }
 </script>

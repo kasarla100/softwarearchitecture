@@ -3,9 +3,9 @@
     <div v-if="isLoading === true">Loading...</div>
     <div v-if="hasError === true">Error</div>
 
-    <p>Branches:</p>
+    <p><b>Branches:</b></p>
     <div class="col" v-for="branch in data" v-bind:key="branch.name">
-      <BranchDetails :branchName="branch.name" :repo="repoName" :repoFullName="repoFullName">
+      <BranchDetails :branchName="branch.name" :repo="repoName" :repoFullName="repoFullName" >
       </BranchDetails>
     </div>
 
@@ -21,8 +21,9 @@ export default {
     BranchDetails,
   },
   props: {
-    repoName: String,
-    repoFullName: String,
+    branchName: String,
+    repo: String,
+    repoFullName: String
   },
   data() {
     return {
@@ -33,7 +34,7 @@ export default {
   },
   mounted() {
     axios
-      .get('http://localhost:5000/branches?repo=' + this.repoName)
+      .get('http://localhost:5000/branches/'+this.repo)
       .then((response) => (this.data = response.data))
       .catch((error) => {
         console.log(error);

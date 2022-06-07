@@ -8,10 +8,10 @@
   <div v-else>
     <div class="grid">
       <div class="col" v-for="project in data" v-bind:key="project.id">
-        <GithubItem :title="project.name" :urlLink="project.html_url" :desc="project.description"
-          :language="project.language" :tags="project.topics">
+        <GithubItem :title="project.name" :urlLink="project.htmlUrl" :desc="project.description"
+          :language="project.language" :tags="project.url">
         </GithubItem>
-        <GithubBranches :repoName="project.name" :repoFullName="project.full_name"></GithubBranches>
+        <GithubBranches :repo="project.name" :repoFullName="project.fullName"></GithubBranches>
       </div>
     </div>
   </div>

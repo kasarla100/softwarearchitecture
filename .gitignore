@@ -36,3 +36,5 @@ yarn-error.log*
 */build
 */node_modules
 *package-lock.json
+.project
+.settings

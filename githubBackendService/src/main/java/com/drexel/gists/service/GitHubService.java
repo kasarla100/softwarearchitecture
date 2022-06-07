@@ -8,7 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.drexel.gists.model.GithubBranch;
 import com.drexel.gists.model.GithubRepository;
+import com.drexel.gists.model.Owner;
+import com.drexel.gists.model.User;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -64,8 +67,35 @@ public class GitHubService {
 	 * @return
 	 * @throws IOException
 	 */
-	public List<GithubRepository> getBranches() throws IOException {
-		Call<List<GithubRepository>> reposCall = service.branches("token " + accessToken, Constants.API_VERSION);
+	public List<GithubBranch> getBranches(String reponame) throws IOException {
+		Call<List<GithubBranch>> reposCall = service.branches(User.getUsername(), reponame);
+
+		Response<List<GithubBranch>> reposResponse = null;
+		List<GithubBranch> repos = null;
+		reposResponse = reposCall.execute();
+
+		if (reposResponse.isSuccessful()) {
+			repos = reposResponse.body();
+			if (repos != null) {
+				logger.info("web request to Github was successful");
+			} else
+				logger.info("Zero repositories found");
+		} else {
+			ResponseBody errorResponse = reposResponse.errorBody();
+			if (errorResponse != null) {
+				logger.warn(errorResponse.string());
+			}
+		}
+
+		return repos;
+	}
+
+	/**
+	 * @return
+	 * @throws IOException
+	 */
+	public List<GithubRepository> gists() throws IOException {
+		Call<List<GithubRepository>> reposCall = service.gists(User.getUsername());
 
 		Response<List<GithubRepository>> reposResponse = null;
 		List<GithubRepository> repos = null;
@@ -91,19 +121,19 @@ public class GitHubService {
 	 * @return
 	 * @throws IOException
 	 */
-	public List<GithubRepository> gists(String userName) throws IOException {
-		Call<List<GithubRepository>> reposCall = service.gists("token " + accessToken, Constants.API_VERSION, userName);
+	public Owner userInfo() throws IOException {
+		Call<Owner> usersInfo = service.getUser(User.getUsername());
 
-		Response<List<GithubRepository>> reposResponse = null;
-		List<GithubRepository> repos = null;
-		reposResponse = reposCall.execute();
+		Response<Owner> reposResponse = null;
+		Owner gitHubUser = null;
+		reposResponse = usersInfo.execute();
 
 		if (reposResponse.isSuccessful()) {
-			repos = reposResponse.body();
-			if (repos != null) {
+			gitHubUser = reposResponse.body();
+			if (gitHubUser != null) {
 				logger.info("web request to Github was successful");
 			} else
-				logger.info("Zero repositories found");
+				logger.info("Zero users found");
 		} else {
 			ResponseBody errorResponse = reposResponse.errorBody();
 			if (errorResponse != null) {
@@ -111,7 +141,18 @@ public class GitHubService {
 			}
 		}
 
-		return repos;
+		return gitHubUser;
+	}
+
+	/**
+	 * @return
+	 * @throws IOException
+	 */
+	public String username() throws IOException {
+		Call<Owner> userInfo = service.username("token " + accessToken, Constants.API_VERSION);
+		Response<Owner> ownerResponse = userInfo.execute();
+		return ownerResponse.body().getLogin();
+
 	}
 
 }

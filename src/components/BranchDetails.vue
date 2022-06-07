@@ -2,7 +2,7 @@
   <div>
     <div>
       <p>
-        <a :href="repoUrl">{{ branchName }}</a>
+        <a :href="repoUrl">{{ repoUrl }}</a>
       </p>
     </div>
   </div>
@@ -14,7 +14,7 @@ export default {
   props: {
     branchName: String,
     repo: String,
-    repoFullName: String,
+    repoFullName: String
   },
   data() {
     return {

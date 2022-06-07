@@ -8,7 +8,7 @@
   <div v-else>
     <ul>
       <div class="col" v-for="project in data" v-bind:key="project.id">
-        <li><a :href="project.html_url">{{ project.name }}</a></li>
+        <li><a :href="project.htmlUrl">{{ project.name }}</a></li>
       </div>
     </ul>
   </div>
